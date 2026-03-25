@@ -198,6 +198,30 @@ check_periodic_override() {
     local since_evolve=$((commits - last_evolve))
     local since_dry=$((commits - last_dry))
 
+    # 0. Cold-start: if backlog is empty and specs/docs exist, force evolve_goals
+    local pending_count
+    pending_count=$(python3 -c "
+import sqlite3
+db = sqlite3.connect('${RALPH_DIR}/ralph.db')
+print(db.execute(\"SELECT COUNT(*) FROM task_view WHERE status='pending'\").fetchone()[0])
+db.close()
+" 2>/dev/null || echo "0")
+
+    if [[ "$pending_count" -eq 0 ]]; then
+        # Check if there are spec/doc files to discover
+        local has_specs=false
+        for dir in "${PROJ_DIR}/specs" "${PROJ_DIR}/docs" "${PROJ_DIR}/adrs"; do
+            if [[ -d "$dir" ]] && find "$dir" -type f \( -name "*.md" -o -name "*.json" -o -name "*.yml" -o -name "*.yaml" \) 2>/dev/null | head -1 | grep -q .; then
+                has_specs=true
+                break
+            fi
+        done
+        if [[ "$has_specs" == "true" ]]; then
+            echo "evolve_goals"
+            return
+        fi
+    fi
+
     # Priority-ordered checks
     # 1. test_integration if >30 commits overdue
     if [[ $since_integ -gt 30 ]]; then

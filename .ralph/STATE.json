@@ -1,0 +1,22 @@
+{
+  "iteration": 0,
+  "phase": "assess",
+  "current_item": null,
+  "current_plan": null,
+  "current_sub_step": 0,
+  "current_wave": 0,
+  "retry_count": 0,
+  "commits_total": 0,
+  "compile_status": "unknown",
+  "test_status": "unknown",
+  "items_done_count": 2,
+  "items_blocked_count": 0,
+  "items_deferred_count": 2,
+  "items_pending_count": 1,
+  "items_total_count": 5,
+  "progress_history": [],
+  "last_evolve_at": 0,
+  "last_dry_at": 0,
+  "last_integ_at": 0,
+  "last_ui_at": 0
+}

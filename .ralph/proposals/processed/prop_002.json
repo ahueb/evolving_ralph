@@ -1,0 +1,16 @@
+{
+  "proposal_type": "new_task",
+  "confidence": 0.5,
+  "task": {
+    "id": "W3-001",
+    "title": "Add caching layer",
+    "source": "ES:50",
+    "effort": "L",
+    "wave": 3,
+    "deps": "-"
+  },
+  "rationale": "Found in spec ES:50",
+  "_deferred": true,
+  "_deferred_reason": "below auto-accept threshold",
+  "_deferred_at": "2026-03-25T10:59:43Z"
+}

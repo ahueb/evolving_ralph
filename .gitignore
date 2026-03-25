@@ -1,0 +1,9 @@
+# Ralph Loop runtime artifacts
+.ralph/ralph.db
+.ralph/ralph.db-wal
+.ralph/ralph.db-shm
+.ralph/locks/
+.ralph/logs/
+.ralph/commits/pending/
+.ralph/commits/applied/
+.worktrees/

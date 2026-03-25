@@ -1,0 +1,6 @@
+{
+  "proposal_type": "new_task",
+  "confidence": 0.85,
+  "task": {"id": "W1-010", "title": "Add retry logic", "source": "ES:15", "effort": "S", "wave": 1, "deps": "-"},
+  "rationale": "Found in spec ES:15, not covered by existing items"
+}

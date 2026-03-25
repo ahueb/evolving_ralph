@@ -1,0 +1,14 @@
+{
+  "name": "test-project",
+  "lang": "python",
+  "build": "python -m py_compile",
+  "lint": "ruff check",
+  "test": "pytest",
+  "test_unit": "pytest -x --tb=short",
+  "fmt": "ruff format --check",
+  "forbidden_patterns": "bare except:|eval(|import \*",
+  "domain_constraints": "",
+  "model": "opus",
+  "budget_primary": "2.50",
+  "budget_worker": "5.00"
+}

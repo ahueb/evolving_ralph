@@ -308,8 +308,8 @@ echo ""
 # ---------------------------------------------------------------------------
 echo -e "${BOLD}7. Proposals${NC}"
 
-proposals=$(ls "${RALPH_DIR}/proposals/prop_"*.json 2>/dev/null | wc -l || echo "0")
-processed=$(ls "${RALPH_DIR}/proposals/processed/prop_"*.json 2>/dev/null | wc -l || echo "0")
+proposals=$(find "${RALPH_DIR}/proposals" -maxdepth 1 -name "prop_*.json" 2>/dev/null | wc -l)
+processed=$(find "${RALPH_DIR}/proposals/processed" -maxdepth 1 -name "prop_*.json" 2>/dev/null | wc -l)
 
 if [[ "$proposals" -gt 0 ]]; then
     check_warn "${proposals} unprocessed proposal(s)"

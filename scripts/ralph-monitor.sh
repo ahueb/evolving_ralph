@@ -146,7 +146,7 @@ print_patch_summary() {
 
     # Pending patches in filesystem
     local pending_files
-    pending_files=$(ls "${RALPH_DIR}/commits/pending/"*.patch 2>/dev/null | wc -l || echo "0")
+    pending_files=$(find "${RALPH_DIR}/commits/pending" -maxdepth 1 -name "*.patch" 2>/dev/null | wc -l)
     if [[ "$pending_files" -gt 0 ]]; then
         echo -e "  ${YELLOW}Pending merge: ${pending_files} patch file(s)${NC}"
     fi
@@ -271,8 +271,8 @@ print_process_status() {
 
     # Check for claude processes
     local claude_pids
-    claude_pids=$(pgrep -f "claude -p" 2>/dev/null | wc -l || echo "0")
-    if [[ "$claude_pids" -gt 0 ]]; then
+    claude_pids="$(pgrep -cf "claude -p" 2>/dev/null)" || claude_pids="0"
+    if [[ "${claude_pids:-0}" -gt 0 ]]; then
         echo -e "  Claude instances:  ${GREEN}${claude_pids} active${NC}"
     else
         echo -e "  Claude instances:  ${DIM}none${NC}"
@@ -280,7 +280,7 @@ print_process_status() {
 
     # Check lock files
     local locks
-    locks=$(ls "${RALPH_DIR}/locks/"*.lock 2>/dev/null | wc -l || echo "0")
+    locks=$(find "${RALPH_DIR}/locks" -maxdepth 1 -name "*.lock" 2>/dev/null | wc -l)
     if [[ "$locks" -gt 0 ]]; then
         echo -e "  Active locks:     ${YELLOW}${locks}${NC}"
     fi
