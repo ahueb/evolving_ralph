@@ -1,9 +1,6 @@
-# Ralph Loop runtime artifacts
-.ralph/ralph.db
+# SQLite WAL/SHM lock files (transient, regenerated automatically)
 .ralph/ralph.db-wal
 .ralph/ralph.db-shm
-.ralph/locks/
-.ralph/logs/
-.ralph/commits/pending/
-.ralph/commits/applied/
+
+# Worker worktree (transient clone of repo, recreated each cycle)
 .worktrees/
